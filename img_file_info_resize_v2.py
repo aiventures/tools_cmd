@@ -12,6 +12,9 @@ import sys
 from tools import img_file_info_xls as img_info
 from pathlib import Path
 
+# from _paths import exe_magick
+# from _paths import exe_exiftool
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--path","-p",default=".",help="Start Path",metavar='File Path')
 parser.add_argument("-image_size","-is",default=1800,help="Resized Image Size",type=int,metavar='target image size')
@@ -26,6 +29,7 @@ parser.add_argument('--keep_metadata',"-md", dest='remove_metadata', action='sto
 parser.set_defaults(remove_metadata=True)
 
 parser.add_argument("--magick","-m",default="magick.exe",help="magick.exe executable/location (needs to be in Win path)",metavar='magick exe')
+parser.add_argument("--exiftool","-e",default="exiftool.exe",help="exiftool.exe executable/location (needs to be in Win path)",metavar='exiftool exe')
 
 parser.add_argument('--save',"-s", dest='save', action='store_true',help="Save Images")
 parser.add_argument('--no-save',"-nos", dest='save', action='store_false',help="Do not save images")
@@ -46,6 +50,7 @@ prefix=args.prefix
 quality=args.quality
 remove_metadata=args.remove_metadata
 magick=args.magick
+exiftool=args.exiftool
 save=args.save
 descriptions=args.descriptions
 target_path=args.target_path
@@ -57,7 +62,9 @@ else:
     print(f"{p} is not a valid path")
     sys.exit()
 
-img_info.magick_resize( p,magick=magick,image_size=image_size,
+img_info.magick_resize( p,magick=magick,
+                        exiftool=exiftool,
+                        image_size=image_size,
                         quality=quality,prefix=prefix,
                         remove_metadata=remove_metadata,save=save,
                         descriptions=descriptions,
