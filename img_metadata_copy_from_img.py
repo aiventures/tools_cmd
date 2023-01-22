@@ -43,10 +43,10 @@ else:
     print(f"{p} is not a valid path")
     sys.exit()
 
-# read all metadata recnursively / jpg only
+# read all metadata recursively / jpg only
 metadata_dict=im.exiftool_get_path_dict(root_path,suffix_list=filename_suffixes)
 
-# right now, only consioder jpg files to copy metadata
+# right now, only consider jpg files to copy metadata
 target_filetypes=["jpg"]
 
 copy_dict=im.get_copy_dict(metadata_dict,marker_exif_attributes,filename_signatures,debug=debug)
