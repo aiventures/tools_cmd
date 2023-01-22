@@ -28,3 +28,4 @@ _paths.py
 
 # personal file settings
 _img_file_settings.py
+*_local.py
