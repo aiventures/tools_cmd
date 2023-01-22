@@ -23,6 +23,7 @@ Read out path definitions from `_paths_template.py`
 * `EXIFTOOL.exe` used for reading camera specific metadata, needs to be found in Windows path (**[EXIFTOOL](https://exiftool.org/)**)
 * `IMAGEMAGICK.exe` used for resizing images, needs to be found in Windows path (**[IMAGEMAGICK](https://imagemagick.org)**)
 * Some parts for reading EXIF might require Pillow (**[Installation](https://pillow.readthedocs.io/en/stable/installation.html)**) 
+**NOTE** It might be necessary to define complete path ("c:/.../") to executables in in paths template.
 
 ## [220] Image Processing Preparation 
 
