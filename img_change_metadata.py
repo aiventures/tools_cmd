@@ -8,6 +8,20 @@ from tools import img_file_info_xls as im
 
 # metadata_information
 LENS_INFO={"trio":im.EXIF_LENS_LENSBABY_TRIO}
+lens_dict ={}
+print("Add EXIF: Choose Lens Info:")
+for i,lens in enumerate(im.EXIF_LENSES):
+    print(f"[{str(i).zfill(2)}]: {lens}")
+    lens_dict[str(i)]=im.EXIF_LENSES[lens]
+l_index=input("Enter Lens # (blank=0): ")
+if not l_index:
+    l_index="0"
+lens_info=lens_dict.get(l_index)
+if not lens_info:
+    print("No valid lens info selected")
+    sys.exit(1)
+
+print(f"Lens Data: {lens_info}")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--path","-p",default=".",help="StartPath",metavar='File Path')
@@ -22,19 +36,12 @@ parser.set_defaults(debug=False)
 
 parser.add_argument("--exiftool","-et",default="exiftool.exe",help="Exiftool Executable",metavar='Exiftool Executable')
 
-parser.add_argument("--lens","-l",default="trio",help="Lens Specs (trio)",metavar='Lens Specs (trio)')
-
 args = parser.parse_args()
 print(f"Arguments {args}")
 p=args.path
 save=args.save
 debug=args.debug
 exiftool=args.exiftool
-lens=args.lens
-lens_specs=LENS_INFO.get(lens,None)
-if not lens_specs:
-    print(f"No lens specs found for {lens}, program end.")
-    sys.exit()
 
 if os.path.isdir(p):
     p=str(Path(p).absolute())
@@ -45,4 +52,4 @@ else:
     sys.exit()
 
 # do the other stuff 
-im.change_metadata(p,exif_attribute_dict=lens_specs,save=save,exiftool=exiftool,debug=debug)
+im.change_metadata(p,exif_attribute_dict=lens_info,save=save,exiftool=exiftool,debug=debug)
