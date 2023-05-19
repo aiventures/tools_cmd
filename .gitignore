@@ -20,6 +20,9 @@ pylint_msg.txt
 # personal files
 _paths.py
 
+# generated files
+*_toc.md
+
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
