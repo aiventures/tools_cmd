@@ -85,7 +85,8 @@ if os.path.isdir(p):
     root_path=Path(p).absolute()
     print(f"Using Path {root_path}")
 else:
-    print(f"{p} is not a valid path")
+    root_path=Path(".").absolute()
+    print(f"{p} is not a valid path, using current path {root_path}")
     sys.exit()
 
 # fixed stuff

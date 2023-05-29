@@ -19,6 +19,9 @@ pylint_msg.txt
 
 # personal files
 _paths.py
+*_tmp.py
+*_local.py
+
 
 # generated files
 *_toc.md
