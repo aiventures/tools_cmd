@@ -57,12 +57,12 @@ save=args.save
 debug=args.debug
 exiftool=args.exiftool
 
-if os.path.isdir(p):
-    p=Path(p).absolute()
-    print(f"Using Path {root_path}")
-    pass
-else:
-    print(f"{p} is not a valid path")
-    sys.exit()
+# if os.path.isdir(p):
+#     p=Path(p).absolute()
+#     print(f"Using Path {root_path}")
+#     pass
+# else:
+#     print(f"{p} is not a valid path")
+#     sys.exit()
 
 # do the other stuff 
